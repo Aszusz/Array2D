@@ -59,7 +59,7 @@ suite =
         , test "initialize" <|
             let
                 actual =
-                    Array2D.initialize { cols = 3, rows = 2 } (\_ -> 0)
+                    Array2D.repeat { cols = 3, rows = 2 } 0
             in
             \_ -> Expect.equal actual array5
         ]

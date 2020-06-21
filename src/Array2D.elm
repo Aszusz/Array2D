@@ -1,4 +1,14 @@
-module Array2D exposing (Array2D, Position, Size, cartesianProduct, empty, get, indexedMap, initialize)
+module Array2D exposing
+    ( Array2D
+    , Position
+    , Size
+    , cartesianProduct
+    , empty
+    , get
+    , indexedMap
+    , initialize
+    , repeat
+    )
 
 import Array exposing (Array, indexedMap, initialize)
 
@@ -26,6 +36,11 @@ initialize size func =
             Array.initialize size.cols (\colIndex -> func { colIndex = colIndex, rowIndex = rowIndex })
     in
     Array.initialize size.rows initializeRow
+
+
+repeat : Size -> a -> Array2D a
+repeat size default =
+    initialize size (\_ -> default)
 
 
 empty : Array2D a
