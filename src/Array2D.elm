@@ -19,13 +19,13 @@ type alias Position =
     }
 
 
-initialize : Int -> Int -> (Int -> Int -> a) -> Array2D a
-initialize rows cols func =
+initialize : Size -> (Position -> a) -> Array2D a
+initialize size func =
     let
         initializeRow rowIndex =
-            Array.initialize cols (func rowIndex)
+            Array.initialize size.cols (\colIndex -> func { colIndex = colIndex, rowIndex = rowIndex })
     in
-    Array.initialize rows initializeRow
+    Array.initialize size.rows initializeRow
 
 
 empty : Array2D a
