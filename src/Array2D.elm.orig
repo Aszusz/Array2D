@@ -1,12 +1,25 @@
-module Array2D exposing (Array2D, Position, Size, cartesianProduct, empty, get, indexedMap, initialize)
+<<<<<<< HEAD
+module Array2D exposing (Array2D, cartesianProduct, empty, get, indexedMap, initialize)
+=======
+module Array2D exposing (Array2D, Position, Size, cartesianProduct, empty, get, indexedMap)
+>>>>>>> parent of 32764a7... Merge branch 'experiment/remove-records'
 
-import Array exposing (Array, indexedMap, initialize)
+import Array exposing (Array, indexedMap, initialize, repeat)
 
 
 type alias Array2D a =
     Array (Array a)
 
 
+<<<<<<< HEAD
+initialize : Int -> Int -> (Int -> Int -> a) -> Array2D a
+initialize rows cols func =
+    let
+        initializeRow rowIndex =
+            Array.initialize cols (func rowIndex)
+    in
+    Array.initialize rows initializeRow
+=======
 type alias Size =
     { cols : Int
     , rows : Int
@@ -17,15 +30,7 @@ type alias Position =
     { rowIndex : Int
     , colIndex : Int
     }
-
-
-initialize : Int -> Int -> (Int -> Int -> a) -> Array2D a
-initialize rows cols func =
-    let
-        initializeRow rowIndex =
-            Array.initialize cols (func rowIndex)
-    in
-    Array.initialize rows initializeRow
+>>>>>>> parent of 32764a7... Merge branch 'experiment/remove-records'
 
 
 empty : Array2D a

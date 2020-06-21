@@ -47,13 +47,13 @@ suite =
         , test "get" <|
             let
                 actual =
-                    Array2D.get 2 1 array3
+                    Array2D.get { rowIndex = 2, colIndex = 1 } array3
             in
             \_ -> Expect.equal actual <| Just ( "C", 2 )
         , test "indexedMap" <|
             let
                 actual =
-                    Array2D.indexedMap (\rowIndex colIndex _ -> ( rowIndex + 1, colIndex + 1 )) array3
+                    Array2D.indexedMap (\pos _ -> ( pos.rowIndex + 1, pos.colIndex + 1 )) array3
             in
             \_ -> Expect.equal actual array4
         , test "initialize" <|
