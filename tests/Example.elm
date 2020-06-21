@@ -29,6 +29,12 @@ suite =
                 , Array.fromList [ ( 2, 1 ), ( 2, 2 ), ( 2, 3 ) ]
                 , Array.fromList [ ( 3, 1 ), ( 3, 2 ), ( 3, 3 ) ]
                 ]
+
+        array5 =
+            Array.fromList
+                [ Array.fromList [ 0, 0, 0 ]
+                , Array.fromList [ 0, 0, 0 ]
+                ]
     in
     describe "Math tests"
         [ test "List2D is a cartesian product of two lists" <|
@@ -50,4 +56,10 @@ suite =
                     Array2D.indexedMap (\rowIndex colIndex _ -> ( rowIndex + 1, colIndex + 1 )) array3
             in
             \_ -> Expect.equal actual array4
+        , test "initialize" <|
+            let
+                actual =
+                    Array2D.initialize 2 3 (\_ _ -> 0)
+            in
+            \_ -> Expect.equal actual array5
         ]

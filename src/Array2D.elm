@@ -1,10 +1,19 @@
-module Array2D exposing (Array2D, cartesianProduct, empty, get, indexedMap)
+module Array2D exposing (Array2D, cartesianProduct, empty, get, indexedMap, initialize)
 
-import Array exposing (Array, indexedMap)
+import Array exposing (Array, indexedMap, initialize, repeat)
 
 
 type alias Array2D a =
     Array (Array a)
+
+
+initialize : Int -> Int -> (Int -> Int -> a) -> Array2D a
+initialize rows cols func =
+    let
+        initializeRow rowIndex =
+            Array.initialize cols (func rowIndex)
+    in
+    Array.initialize rows initializeRow
 
 
 empty : Array2D a
