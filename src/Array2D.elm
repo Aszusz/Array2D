@@ -1,4 +1,4 @@
-module Array2D exposing (Array2D, Position, Size, cross, empty, get, indexedMap)
+module Array2D exposing (Array2D, Position, Size, cartesianProduct, empty, get, indexedMap)
 
 import Array exposing (Array, indexedMap)
 
@@ -52,6 +52,6 @@ indexedMap func arr =
     arr |> Array.indexedMap mapRow
 
 
-cross : (a -> b -> result) -> Array a -> Array b -> Array2D result
-cross func xs ys =
+cartesianProduct : (a -> b -> result) -> Array a -> Array b -> Array2D result
+cartesianProduct func xs ys =
     Array.map (\x -> Array.map (\y -> func x y) ys) xs

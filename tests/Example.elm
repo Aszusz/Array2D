@@ -31,11 +31,11 @@ suite =
                 ]
     in
     describe "Math tests"
-        [ test "List2D is a cross product of two lists" <|
+        [ test "List2D is a cartesian product of two lists" <|
             \_ ->
                 let
                     actual =
-                        Array2D.cross Tuple.pair array1 array2
+                        Array2D.cartesianProduct Tuple.pair array1 array2
                 in
                 Expect.equal actual array3
         , test "get" <|
